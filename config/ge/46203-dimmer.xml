@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Product xmlns='http://code.google.com/p/open-zwave/'>
+<!-- Configuration Parameters - per https://products.z-wavealliance.org/products/3317/ -->
+	<CommandClass id="112">
+		<Value type="list" index="3" genre="config" label="LED Light" min="0" max="2" value="0" size="1">
+			<Help>Sets when the LED on the switch is lit.</Help>
+			<Item label="LED on when light off" value="0" />
+			<Item label="LED on when light on" value="1" />
+			<Item label="LED always off" value="2" />
+			<Item label="LED always on" value="3"/>
+		</Value>
+		<Value type="list" index="6" genre="config" label="Dim up/down rate" min="0" max="1" value="0" size="1">
+			<Help>Adjust the speed at which the ramps to a specific value other than 0 and FF</Help>
+			<Item label="Dim up/down the light to the specified level quickly by command except value 0 and FF" value="0" />
+			<Item label="Dim up/down the light to the specified level slowly by command except value 0 and FF" value="1" />
+		</Value>
+		<Value type="list" index="16" genre="config" label="Switch Mode" min="0" max="1" value="0" size="1">
+			<Help>Turn your dimmer into an On/Off switch with switch mode</Help>
+			<Item label="Disable normal operation" value="0" />
+			<Item label="Enable switch mode" value="1" />
+		</Value>
+		<Value type="list" index="19" genre="config" label="Alternate Exclusion" min="0" max="1" value="0" size="1">
+			<Help>Default - normal exclusion
+              Active - perform a series of button presses to help eliminate accidental exclusion</Help>
+			<Item label="Press any button" value="0"/>
+			<Item label="Press two times ON, two times OFF" value="1"/>
+		</Value>
+		<Value type="byte" index="30" genre="config" label="Minimum Dim Threshold" units="" min="1" max="99" value="1">
+			<Help>Set the minimum dimmer threshold</Help>
+		</Value>
+		<Value type="byte" index="31" genre="config" label="Maximum Brightness Threshold" units="" min="0" max="99" value="99">
+			<Help>Set the brightness threshold</Help>
+		</Value>
+		<Value type="byte" index="32" genre="config" label="Default Brightness Level" units="" min="0" max="99" value="0">
+			<Help>Set the default brightness level that the dimmer will turn on when being controlled manually</Help>
+		</Value>
+	</CommandClass>
+	<!-- Association Groups -->
+	<CommandClass id="133">
+		<Associations num_groups="3">
+			<Group index="1" max_associations="5" label="Lifeline" />
+			<Group index="2" max_associations="5" label="Basic - Local Load" />
+			<Group index="3" max_associations="5" label="Basic - Double Tap" />
+		</Associations>
+	</CommandClass>
+</Product>
